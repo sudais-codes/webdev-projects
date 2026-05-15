@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudais Khan | Portfolio</title>
+    <meta name="description" content="Portfolio of Sudais Khan, Software Engineering Student & Web Developer.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Sudais<span>Khan</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" style="display: flex; align-items: center; justify-content: center;">
+            <div id="tsparticles"></div>
+            <div class="container hero-content" style="z-index: 1;">
+                <div class="hero-grid" style="display: block;">
+                    <div class="hero-text"
+                        style="max-width: 700px; margin: 0 auto; text-align: center; flex: none; width: 100%;">
+                        <h1 style="font-size: clamp(2rem, 10vw, 4rem); margin-bottom: 20px; white-space: nowrap;">Hi,
+                            I'm <span style="color: #fff">Sudais</span> <span
+                                style="color: var(--accent-blue)">Khan</span></h1>
+                        <p class="role" style="margin-bottom: 16px; text-align: center;">Software Engineering Student &
+                            Web Developer</p>
+                        <div class="typed-text" style="margin-bottom: 24px; text-align: center;">
+                            <span id="typed"></span>
+                        </div>
+                        <div class="btn-group"
+                            style="display: flex; gap: 16px; margin-top: 0; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;">
+                            <a href="projects.html" class="btn btn-primary">View My Work</a>
+                            <a href="contact.html" class="btn btn-outline">Contact Me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="glass-card stat-card">
+                        <i class="fas fa-code"></i>
+                        <span class="stat-number" data-target="10" data-suffix="+">0</span>
+                        <div class="stat-label">Projects</div>
+                        <div class="stat-line"></div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <span class="stat-number" data-target="5" data-suffix="+">0</span>
+                        <div class="stat-label">Skills</div>
+                        <div class="stat-line"></div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <i class="fas fa-user-graduate"></i>
+                        <span class="stat-number" data-target="2" data-suffix="+">0</span>
+                        <div class="stat-label">Years Learning</div>
+                        <div class="stat-line"></div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <i class="fas fa-heart"></i>
+                        <span class="stat-number" data-target="100" data-suffix="%">0</span>
+                        <div class="stat-label">Passion</div>
+                        <div class="stat-line"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee Strip -->
+        <div class="marquee-strip">
+            <div class="marquee-wrapper">
+                <div class="marquee-group">
+                    <div class="marquee-pill"><i class="fas fa-code"></i> Web Development</div>
+                    <div class="marquee-pill"><i class="fas fa-c"></i> C++ Programming</div>
+                    <div class="marquee-pill"><i class="fas fa-file-word"></i> MS Office</div>
+                    <div class="marquee-pill"><i class="fab fa-html5"></i> HTML & CSS</div>
+                    <div class="marquee-pill"><i class="fab fa-js"></i> JavaScript</div>
+                    <div class="marquee-pill"><i class="fas fa-brain"></i> Problem Solving</div>
+                    <div class="marquee-pill"><i class="fas fa-mobile-screen"></i> Responsive Design</div>
+                    <div class="marquee-pill"><i class="fas fa-laptop-code"></i> Clean Code</div>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="marquee-group">
+                    <div class="marquee-pill"><i class="fas fa-code"></i> Web Development</div>
+                    <div class="marquee-pill"><i class="fas fa-c"></i> C++ Programming</div>
+                    <div class="marquee-pill"><i class="fas fa-file-word"></i> MS Office</div>
+                    <div class="marquee-pill"><i class="fab fa-html5"></i> HTML & CSS</div>
+                    <div class="marquee-pill"><i class="fab fa-js"></i> JavaScript</div>
+                    <div class="marquee-pill"><i class="fas fa-brain"></i> Problem Solving</div>
+                    <div class="marquee-pill"><i class="fas fa-mobile-screen"></i> Responsive Design</div>
+                    <div class="marquee-pill"><i class="fas fa-laptop-code"></i> Clean Code</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Projects -->
+        <section id="featured-projects">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="project-grid">
+                    <article class="glass-card project-card">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                            alt="Portfolio Website" class="project-img" loading="lazy">
+                        <div class="project-info">
+                            <h3>Personal Portfolio</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: var(--s2)">A premium, dark-mode
+                                portfolio built with vanilla JS and GSAP.</p>
+                            <div class="tech-tags">
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS3</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                            <a href="projects.html" class="btn btn-outline" style="width: 100%;">View Project</a>
+                        </div>
+                    </article>
+                    <article class="glass-card project-card">
+                        <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=800"
+                            alt="C++ Application" class="project-img" loading="lazy">
+                        <div class="project-info">
+                            <h3>Grade Calculator</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: var(--s2)">A robust student
+                                management system built with C++ programming.</p>
+                            <div class="tech-tags">
+                                <span class="tag">C++</span>
+                                <span class="tag">Algorithms</span>
+                            </div>
+                            <a href="projects.html" class="btn btn-outline" style="width: 100%;">View Project</a>
+                        </div>
+                    </article>
+                    <article class="glass-card project-card">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800"
+                            alt="Web App" class="project-img" loading="lazy">
+                        <div class="project-info">
+                            <h3>Modern Landing Page</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: var(--s2)">Fully responsive business
+                                landing page with clean UI/UX.</p>
+                            <div class="tech-tags">
+                                <span class="tag">Responsive</span>
+                                <span class="tag">HTML/CSS</span>
+                            </div>
+                            <a href="projects.html" class="btn btn-outline" style="width: 100%;">View Project</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Banner -->
+        <section style="background: var(--bg-secondary); text-align: center;">
+            <div class="container">
+                <h2 style="font-size: 3rem; margin-bottom: var(--s2);">Let's Build Something Amazing Together</h2>
+                <p style="color: var(--text-secondary); margin-bottom: var(--s4); font-size: 1.2rem;">I'm available for
+                    freelance projects and collaborations.</p>
+                <a href="contact.html" class="btn btn-primary" style="padding: var(--s3) var(--s8);">Hire Me Now</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-left">
+                    <div class="logo">Sudais<span>Khan</span></div>
+                    <p class="tagline">Software Engineering Student & Web Developer</p>
+                </div>
+                <div class="footer-center">
+                    <a href="https://github.com/sudais-khan" class="social-btn" aria-label="GitHub"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/sudais-khan" class="social-btn" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="mailto:sudaissarai130@gmail.com" class="social-btn" aria-label="Email"><i
+                            class="fas fa-envelope"></i></a>
+                </div>
+                <div class="footer-right">
+                    <p>Email: sudaissarai130@gmail.com</p>
+                    <p>Phone: 0344*****</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Sudais Khan. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        new Typed('#typed', {
+            strings: ['Building the Web.', 'Writing Clean Code.', 'Turning Ideas into Reality.'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true
+        });
+
+        tsParticles.load("tsparticles", {
+            particles: {
+                number: { value: 60 },
+                color: { value: "#00BFFF" },
+                links: { enable: true, color: "#00BFFF", opacity: 0.1 },
+                move: { enable: true, speed: 0.8 }
+            }
+        });
+    </script>
+</body>
+
+</html>
