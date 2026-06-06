@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anum Saloon | Premium Beauty Parlor in Swat</title>
+    <meta name="description" content="Anum Saloon - Where Every Woman Glows. Experience premium bridal makeup, facials, and hair styling in Swat, Saidu Sharif. Professional beauty services established since 2018.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="container"></div>
+    </div>
+
+    <!-- Glass Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                Anum <span>Saloon</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#about" class="nav-link">Our Story</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            
+            <a href="https://wa.me/923105274267" class="nav-cta">
+                Book Appointment
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Cinematic Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-tagline">Where Every Woman Glows</span>
+                    <h1 class="h1">The Art of <br>Modern Beauty</h1>
+                    <p class="hero-description">Discover Swat's most premium beauty destination. We blend luxury artistry with professional care to reveal your natural radiance.</p>
+                    
+                    <div class="hero-btns">
+                        <a href="https://wa.me/923105274267" class="btn-primary">Book Appointment</a>
+                        <a href="#services" class="btn-outline">View Services</a>
+                    </div>
+
+                    <!-- Hero Rating Badge -->
+                    <div style="margin-top: 40px; display: flex; align-items: center; gap: 15px;">
+                        <div style="display: flex; color: var(--color-secondary);">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span style="font-weight: 700; color: var(--text-dark);">4.8/5 Rating</span>
+                        <span style="color: var(--text-light);">(234+ Happy Reviews)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image-container">
+                <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=1200" alt="Anum Saloon Luxury Beauty Campaign" id="hero-img">
+            </div>
+        </section>
+
+        <!-- Floating Stats Bar -->
+        <section class="stats-bar">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">6+</span>
+                        <span class="stat-label">Years Excellence</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">25+</span>
+                        <span class="stat-label">Expert Stylists</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3k+</span>
+                        <span class="stat-label">Bridal Clients</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Hygiene Guaranteed</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee Services Strip -->
+        <div class="marquee-strip">
+            <div class="marquee-content">
+                <span class="marquee-item">Bridal Makeup <span class="marquee-dot">•</span></span>
+                <span class="marquee-item">HydraFacial <span class="marquee-dot">•</span></span>
+                <span class="marquee-item">Keratin Treatment <span class="marquee-dot">•</span></span>
+                <span class="marquee-item">Mehndi Art <span class="marquee-dot">•</span></span>
+                <span class="marquee-item">Nail Art <span class="marquee-dot">•</span></span>
+                <span class="marquee-item">Gold Facial <span class="marquee-dot">•</span></span>
+                <!-- Duplicate for seamless loop -->
+                <span class="marquee-item">Bridal Makeup <span class="marquee-dot">•</span></span>
+                <span class="marquee-item">HydraFacial <span class="marquee-dot">•</span></span>
+                <span class="marquee-item">Keratin Treatment <span class="marquee-dot">•</span></span>
+                <span class="marquee-item">Mehndi Art <span class="marquee-dot">•</span></span>
+                <span class="marquee-item">Nail Art <span class="marquee-dot">•</span></span>
+                <span class="marquee-item">Gold Facial <span class="marquee-dot">•</span></span>
+            </div>
+        </div>
+
+        <!-- Services Section with Filtering -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Our Expertise</span>
+                    <h2 class="h2">Curated Beauty Services</h2>
+                </div>
+
+                <div class="filter-btns">
+                    <button class="filter-btn active" data-filter="all">All Services</button>
+                    <button class="filter-btn" data-filter="makeup">Makeup</button>
+                    <button class="filter-btn" data-filter="facial">Facials</button>
+                    <button class="filter-btn" data-filter="hair">Hair Care</button>
+                    <button class="filter-btn" data-filter="body">Body & Nails</button>
+                </div>
+
+                <div class="services-grid">
+                    <!-- HydraFacial -->
+                    <article class="service-card" data-category="facial">
+                        <div class="service-img">
+                            <span class="service-category">Facial</span>
+                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800" alt="HydraFacial Treatment" loading="lazy">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Premium HydraFacial</h3>
+                            <p class="service-desc">Advanced medical-grade facial for deep cleansing, extraction, and intense hydration.</p>
+                            <div class="service-footer">
+                                <span class="service-price">PKR 8,500</span>
+                                <span class="service-duration"><i class="far fa-clock"></i> 60 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Keratin -->
+                    <article class="service-card" data-category="hair">
+                        <div class="service-img">
+                            <span class="service-category">Hair</span>
+                            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=800" alt="Keratin Hair Treatment" loading="lazy">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Keratin Therapy</h3>
+                            <p class="service-desc">Professional hair smoothing treatment that eliminates frizz and adds brilliant shine.</p>
+                            <div class="service-footer">
+                                <span class="service-price">PKR 12,000</span>
+                                <span class="service-duration"><i class="far fa-clock"></i> 3 hrs</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Nail Art -->
+                    <article class="service-card" data-category="body">
+                        <div class="service-img">
+                            <span class="service-category">Nails</span>
+                            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=800" alt="Luxury Nail Art" loading="lazy">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Luxury Nail Art</h3>
+                            <p class="service-desc">Exquisite gel extensions and customized hand-painted designs for every occasion.</p>
+                            <div class="service-footer">
+                                <span class="service-price">PKR 3,500</span>
+                                <span class="service-duration"><i class="far fa-clock"></i> 90 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Mehndi -->
+                    <article class="service-card" data-category="makeup">
+                        <div class="service-img">
+                            <span class="service-category">Art</span>
+                            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=800" alt="Bridal Mehndi Design" loading="lazy">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Bridal Mehndi</h3>
+                            <p class="service-desc">Intricate traditional and Arabic organic henna designs by our specialist artists.</p>
+                            <div class="service-footer">
+                                <span class="service-price">PKR 5,000</span>
+                                <span class="service-duration"><i class="far fa-clock"></i> 2 hrs</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Eyelash -->
+                    <article class="service-card" data-category="body">
+                        <div class="service-img">
+                            <span class="service-category">Eyes</span>
+                            <img src="https://images.unsplash.com/photo-1583001931096-959e9a1a6223?auto=format&fit=crop&q=80&w=800" alt="Eyelash Extensions" loading="lazy">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Eyelash Extensions</h3>
+                            <p class="service-desc">Premium silk lashes applied individually for a natural, voluminous and lasting look.</p>
+                            <div class="service-footer">
+                                <span class="service-price">PKR 4,000</span>
+                                <span class="service-duration"><i class="far fa-clock"></i> 60 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Party Makeup -->
+                    <article class="service-card" data-category="makeup">
+                        <div class="service-img">
+                            <span class="service-category">Makeup</span>
+                            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=800" alt="Party Makeup Look" loading="lazy">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Party Makeup</h3>
+                            <p class="service-desc">Glamorous and sophisticated makeup looks tailored for any evening event or party.</p>
+                            <div class="service-footer">
+                                <span class="service-price">PKR 6,500</span>
+                                <span class="service-duration"><i class="far fa-clock"></i> 90 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Whitening Facial -->
+                    <article class="service-card" data-category="facial">
+                        <div class="service-img">
+                            <span class="service-category">Facial</span>
+                            <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=800" alt="Whitening Facial Treatment" loading="lazy">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Whitening Facial</h3>
+                            <p class="service-desc">Brightening treatment that targets pigmentation and uneven skin tone for an instant glow.</p>
+                            <div class="service-footer">
+                                <span class="service-price">PKR 4,500</span>
+                                <span class="service-duration"><i class="far fa-clock"></i> 75 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Manicure & Pedicure -->
+                    <article class="service-card" data-category="body">
+                        <div class="service-img">
+                            <span class="service-category">Spa</span>
+                            <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=800" alt="Premium Manicure and Pedicure" loading="lazy">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Mani & Pedi</h3>
+                            <p class="service-desc">Relaxing hand and foot treatment including scrub, massage, and expert nail care.</p>
+                            <div class="service-footer">
+                                <span class="service-price">PKR 3,000</span>
+                                <span class="service-duration"><i class="far fa-clock"></i> 90 min</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-visual">
+                        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800" alt="Anum Saloon Experience" class="about-img-main">
+                        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=600" alt="Beauty Detail" class="about-img-sub">
+                        <div class="about-experience">
+                            <span class="exp-num">2018</span>
+                            <span class="exp-text">Est. Year</span>
+                        </div>
+                    </div>
+                    
+                    <div class="about-content">
+                        <span class="section-subtitle">Since 2018</span>
+                        <h2 class="h2">Crafting Confidence Through Luxury Care</h2>
+                        <p class="text-lg">At Anum Saloon, we believe that beauty is an experience, not just a service. Located in the heart of Swat, we have spent over 6 years perfecting the art of bridal elegance and skincare.</p>
+                        <p>Our team of highly trained professionals uses only the world's finest products to ensure your skin and hair receive the royal treatment they deserve. We are a women-owned business dedicated to empowering every woman who walks through our doors.</p>
+                        
+                        <ul class="footer-links" style="margin: 30px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Certified Experts</li>
+                            <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Premium Products</li>
+                            <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Women-Owned</li>
+                            <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Child Friendly</li>
+                        </ul>
+
+                        <a href="https://wa.me/923105274267" class="btn-primary">Learn Our Story</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Accordion -->
+        <section id="pricing" class="pricing-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Transparent Pricing</span>
+                    <h2 class="h2">Our Menu</h2>
+                </div>
+
+                <div class="pricing-container">
+                    <!-- Makeup Category -->
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3 class="accordion-title">Makeup & Occasions</h3>
+                            <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="price-list">
+                                <div class="price-row"><span class="price-name">Bridal Makeup</span><div class="price-dots"></div><span class="price-val">PKR 25,000+</span></div>
+                                <div class="price-row"><span class="price-name">Walima Makeup</span><div class="price-dots"></div><span class="price-val">PKR 20,000+</span></div>
+                                <div class="price-row"><span class="price-name">Engagement Makeup</span><div class="price-dots"></div><span class="price-val">PKR 15,000+</span></div>
+                                <div class="price-row"><span class="price-name">Nikah Makeup</span><div class="price-dots"></div><span class="price-val">PKR 12,000+</span></div>
+                                <div class="price-row"><span class="price-name">Party Makeup</span><div class="price-dots"></div><span class="price-val">PKR 5,000+</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skin Category -->
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3 class="accordion-title">Skin & Facial Treatments</h3>
+                            <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="price-list">
+                                <div class="price-row"><span class="price-name">HydraFacial (Premium)</span><div class="price-dots"></div><span class="price-val">PKR 8,500</span></div>
+                                <div class="price-row"><span class="price-name">Gold Facial</span><div class="price-dots"></div><span class="price-val">PKR 4,500</span></div>
+                                <div class="price-row"><span class="price-name">Whitening Facial</span><div class="price-dots"></div><span class="price-val">PKR 3,500</span></div>
+                                <div class="price-row"><span class="price-name">Charcoal Facial</span><div class="price-dots"></div><span class="price-val">PKR 2,500</span></div>
+                                <div class="price-row"><span class="price-name">Full Body Massage</span><div class="price-dots"></div><span class="price-val">PKR 6,000</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hair Category -->
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3 class="accordion-title">Hair Styling & Care</h3>
+                            <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="price-list">
+                                <div class="price-row"><span class="price-name">Keratin Treatment</span><div class="price-dots"></div><span class="price-val">PKR 12,000+</span></div>
+                                <div class="price-row"><span class="price-name">Hair Styling</span><div class="price-dots"></div><span class="price-val">PKR 2,000+</span></div>
+                                <div class="price-row"><span class="price-name">Haircut & Blowdry</span><div class="price-dots"></div><span class="price-val">PKR 1,500</span></div>
+                                <div class="price-row"><span class="price-name">Hair Coloring</span><div class="price-dots"></div><span class="price-val">PKR 5,000+</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="why-choose-us" style="padding: var(--section-padding) 0; background: white;">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Why Anum Saloon</span>
+                    <h2 class="h2">The Anum Experience</h2>
+                </div>
+                
+                <div class="stats-grid" style="box-shadow: none; border: 1px solid var(--border-light); background: var(--bg-soft);">
+                    <div class="stat-item" style="padding: 20px;">
+                        <i class="fas fa-magic" style="font-size: 2rem; color: var(--color-accent); margin-bottom: 20px; display: block;"></i>
+                        <h4 style="margin-bottom: 10px;">Artistic Precision</h4>
+                        <p style="font-size: 0.85rem;">Every stroke and style is executed with master-level precision.</p>
+                    </div>
+                    <div class="stat-item" style="padding: 20px;">
+                        <i class="fas fa-leaf" style="font-size: 2rem; color: var(--color-accent); margin-bottom: 20px; display: block;"></i>
+                        <h4 style="margin-bottom: 10px;">Organic Products</h4>
+                        <p style="font-size: 0.85rem;">We use premium, dermatologically tested organic ingredients.</p>
+                    </div>
+                    <div class="stat-item" style="padding: 20px;">
+                        <i class="fas fa-heart" style="font-size: 2rem; color: var(--color-accent); margin-bottom: 20px; display: block;"></i>
+                        <h4 style="margin-bottom: 10px;">Hygienic Space</h4>
+                        <p style="font-size: 0.85rem;">Your health is our priority. 100% sanitized environment.</p>
+                    </div>
+                    <div class="stat-item" style="padding: 20px;">
+                        <i class="fas fa-award" style="font-size: 2rem; color: var(--color-accent); margin-bottom: 20px; display: block;"></i>
+                        <h4 style="margin-bottom: 10px;">Expert Team</h4>
+                        <p style="font-size: 0.85rem;">Our staff is trained in the latest global beauty trends.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Carousel -->
+        <section class="testimonials-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle" style="color: var(--color-secondary);">Happy Clients</span>
+                    <h2 class="h2">Stories of Radiance</h2>
+                </div>
+
+                <div class="testimonial-slider">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-content">"Anum Saloon made my big day truly special. The bridal makeup was flawless and lasted throughout the event. Best salon in Swat for anyone looking for premium quality!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/150?u=1" alt="Saba Khan" class="author-img">
+                            <div>
+                                <div class="author-name">Saba Khan</div>
+                                <div class="author-role">Bridal Client, Swat</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-content">"I've tried HydraFacial at many places, but the result here was unmatched. My skin felt so hydrated and glowing instantly. Highly recommended for their professionalism."</p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/150?u=2" alt="Zainab Bibi" class="author-img">
+                            <div>
+                                <div class="author-name">Zainab Bibi</div>
+                                <div class="author-role">Regular Client, Saidu Sharif</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-content">"The most hygienic and premium parlor in Swat. Their Keratin treatment completely transformed my hair. Excellent staff and very warm environment."</p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/150?u=3" alt="Maryam Ali" class="author-img">
+                            <div>
+                                <div class="author-name">Maryam Ali</div>
+                                <div class="author-role">Fashion Designer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery-section" style="padding: var(--section-padding) 0; background: var(--bg-soft);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Our Gallery</span>
+                    <h2 class="h2">Captured Radiance</h2>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-column">
+                        <div class="gallery-item" style="height: 400px;">
+                            <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=80" alt="Bridal Beauty Portrait" loading="lazy">
+                            <div class="gallery-overlay"><i class="fas fa-search-plus" style="color: white; font-size: 1.5rem;"></i></div>
+                        </div>
+                        <div class="gallery-item" style="height: 500px;">
+                            <img src="https://images.unsplash.com/photo-1604654894610-0f1c1a8b6f0d?auto=format&fit=crop&q=80&w=800" alt="Luxury Nail Art" loading="lazy">
+                            <div class="gallery-overlay"><i class="fas fa-search-plus" style="color: white; font-size: 1.5rem;"></i></div>
+                        </div>
+
+                    </div>
+                    <div class="gallery-column">
+                        <div class="gallery-item" style="height: 500px;">
+                            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80&w=800" alt="Premium Beauty Look" loading="lazy">
+                            <div class="gallery-overlay"><i class="fas fa-search-plus" style="color: white; font-size: 1.5rem;"></i></div>
+                        </div>                        <div class="gallery-item" style="height: 350px;">
+                            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=800" alt="Hair Styling Excellence">
+                            <div class="gallery-overlay"><i class="fas fa-search-plus" style="color: white; font-size: 1.5rem;"></i></div>
+                        </div>
+                    </div>
+                    <div class="gallery-column">
+                        <div class="gallery-item" style="height: 400px;">
+                            <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=80&w=800" alt="Signature Eye Makeup Art">
+                            <div class="gallery-overlay"><i class="fas fa-search-plus" style="color: white; font-size: 1.5rem;"></i></div>
+                        </div>
+                        <div class="gallery-item" style="height: 500px;">
+                            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=800" alt="Skincare Glow">
+                            <div class="gallery-overlay"><i class="fas fa-search-plus" style="color: white; font-size: 1.5rem;"></i></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Accordion -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Common Questions</span>
+                    <h2 class="h2">Frequently Asked</h2>
+                </div>
+                
+                <div class="pricing-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3 class="accordion-title">Do I need an appointment?</h3>
+                            <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Yes, we recommend booking at least 2 days in advance for regular services and 1 month for bridal bookings to ensure availability.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3 class="accordion-title">What makeup brands do you use?</h3>
+                            <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="accordion-content">
+                            <p>We use premium international brands including MAC, Huda Beauty, NARS, and Anastasia Beverly Hills to ensure the best results.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Google Maps Location Section -->
+        <section id="contact" class="map-section">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.016452539687!2d72.35408687492016!3d34.75517837290033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dc230020afbfad%3A0xee899fe126e9132e!2sAnum%20Saloon!5e0!3m2!1sen!2s!4v1778765342278!5m2!1sen!2s" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            
+            <div class="container">
+                <div class="map-card">
+                    <span class="section-subtitle">Visit Us</span>
+                    <h3 class="h3">Our Location</h3>
+                    <p style="margin: 15px 0; color: var(--text-body);">Q944+2V8, Saidu Sharif Rd, Swat Saidu Sharif, Pakistan</p>
+                    
+                    <div class="price-list" style="margin: 25px 0;">
+                        <div class="price-row"><span class="price-name">Mon - Sun</span><span class="price-val">9 AM - 10 PM</span></div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px;">
+                        <a href="https://maps.app.goo.gl/8YD7tfErvoJA8P3n7" target="_blank" class="btn-primary" style="padding: 12px 25px; font-size: 0.9rem;">Get Directions</a>
+                        <a href="tel:+923105274267" class="btn-outline" style="padding: 12px 25px; font-size: 0.9rem; color: var(--color-primary); border-color: var(--color-primary);">Call Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Premium Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">Anum Saloon</div>
+                    <p>Elevating beauty standards in Swat since 2018. We are committed to providing luxurious care and professional expertise to every woman.</p>
+                    <div style="display: flex; gap: 15px; font-size: 1.5rem;">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">Services</h4>
+                    <ul>
+                        <li><a href="#">Bridal Makeup</a></li>
+                        <li><a href="#">HydraFacial</a></li>
+                        <li><a href="#">Hair Styling</a></li>
+                        <li><a href="#">Mehndi Art</a></li>
+                        <li><a href="#">Nail Care</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 class="footer-title">Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Q944+2V8, Saidu Sharif Rd, Swat</li>
+                        <li><i class="fas fa-phone-alt"></i> +92 310 5274267</li>
+                        <li><i class="fas fa-envelope"></i> info@anumsaloon.pk</li>
+                        <li><i class="fas fa-clock"></i> Open 7 Days: 9AM - 10PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Anum Saloon Swat. All rights reserved.</p>
+                <p>Designed with ❤️ for Swat</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
