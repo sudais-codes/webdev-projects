@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/cdn-images/:path*",
+      "destination": "https://cdn.dummyjson.com/:path*"
+    },
+    {
+      "source": "/dummyjson/:path*",
+      "destination": "https://dummyjson.com/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

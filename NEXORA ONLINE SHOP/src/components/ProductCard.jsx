@@ -9,7 +9,6 @@ export default function ProductCard({ product }) {
   const { addToCart } = useCart();
   const { isFavorite, toggleFavorite } = useFavorites();
   const [justAdded, setJustAdded] = useState(false);
-  const [imageError, setImageError] = useState(false);
 
   if (!product) return null;
 
@@ -36,7 +35,25 @@ export default function ProductCard({ product }) {
     'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" fill="%23F8FAFC"><rect width="400" height="400" fill="%23F8FAFC"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="600" fill="%231D4ED8">NEXORA</text></svg>';
 
   const rawImage = thumbnail || (images && images.length > 0 ? images[0] : '');
-  const displayImage = imageError || !rawImage ? FALLBACK_IMAGE : normalizeImageUrl(rawImage);
+  const initialImage = normalizeImageUrl(rawImage) || FALLBACK_IMAGE;
+
+  const handleImageError = (e) => {
+    const src = e.target.src;
+    // Guard against infinite loop
+    if (!src || src.startsWith('data:image/svg+xml')) return;
+
+    // If direct DummyJSON CDN failed, gracefully retry via local/edge proxy rewrite
+    if (src.includes('cdn.dummyjson.com') && !src.includes('/cdn-images/')) {
+      const proxied = src.replace(/https?:\/\/cdn\.dummyjson\.com\//, '/cdn-images/');
+      if (proxied !== src) {
+        e.target.src = proxied;
+        return;
+      }
+    }
+
+    // If proxy also failed or genuinely unavailable, show clean branded fallback
+    e.target.src = FALLBACK_IMAGE;
+  };
 
   const handleCardClick = () => {
     navigate(`/product/${id}`);
@@ -86,10 +103,10 @@ export default function ProductCard({ product }) {
         aria-label={`View details for ${title}`}
       >
         <img
-          src={displayImage}
+          src={initialImage}
           alt={title}
           loading="lazy"
-          onError={() => setImageError(true)}
+          onError={handleImageError}
         />
         {hasDiscount && (
           <span

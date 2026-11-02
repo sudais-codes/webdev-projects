@@ -83,6 +83,15 @@ export default function Favorites() {
                 src={normalizeImageUrl(product.thumbnail) || 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" fill="%23F1F5F9"><rect width="400" height="400" fill="%23F1F5F9"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="600" fill="%231D4ED8">NEXORA</text></svg>'}
                 alt={product.title}
                 onError={(e) => {
+                  const src = e.target.src;
+                  if (!src || src.startsWith('data:image/svg+xml')) return;
+                  if (src.includes('cdn.dummyjson.com') && !src.includes('/cdn-images/')) {
+                    const proxied = src.replace(/https?:\/\/cdn\.dummyjson\.com\//, '/cdn-images/');
+                    if (proxied !== src) {
+                      e.target.src = proxied;
+                      return;
+                    }
+                  }
                   e.target.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" fill="%23F1F5F9"><rect width="400" height="400" fill="%23F1F5F9"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="600" fill="%231D4ED8">NEXORA</text></svg>';
                 }}
               />

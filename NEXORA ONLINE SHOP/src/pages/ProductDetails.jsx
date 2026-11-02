@@ -126,6 +126,34 @@ export default function ProductDetails() {
   const FALLBACK_DETAIL_IMAGE =
     'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" fill="%23F1F5F9"><rect width="500" height="500" fill="%23F1F5F9"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="600" fill="%2364748B">NEXORA Product</text></svg>';
 
+  const handleDetailImageError = (e) => {
+    const src = e.target.src;
+    if (!src || src.startsWith('data:image/svg+xml')) return;
+
+    if (src.includes('cdn.dummyjson.com') && !src.includes('/cdn-images/')) {
+      const proxied = src.replace(/https?:\/\/cdn\.dummyjson\.com\//, '/cdn-images/');
+      if (proxied !== src) {
+        e.target.src = proxied;
+        return;
+      }
+    }
+    e.target.src = FALLBACK_DETAIL_IMAGE;
+  };
+
+  const handleThumbnailError = (e) => {
+    const src = e.target.src;
+    if (!src || src.startsWith('data:image/svg+xml')) return;
+
+    if (src.includes('cdn.dummyjson.com') && !src.includes('/cdn-images/')) {
+      const proxied = src.replace(/https?:\/\/cdn\.dummyjson\.com\//, '/cdn-images/');
+      if (proxied !== src) {
+        e.target.src = proxied;
+        return;
+      }
+    }
+    e.target.src = FALLBACK_DETAIL_IMAGE;
+  };
+
   const handleQuantityDecrease = () => {
     setQuantity((prev) => Math.max(1, prev - 1));
   };
@@ -160,9 +188,7 @@ export default function ProductDetails() {
             <img
               src={selectedImage || FALLBACK_DETAIL_IMAGE}
               alt={title}
-              onError={(e) => {
-                e.target.src = FALLBACK_DETAIL_IMAGE;
-              }}
+              onError={handleDetailImageError}
             />
             {hasDiscount && (
               <span
@@ -178,21 +204,19 @@ export default function ProductDetails() {
           {images && images.length > 1 && (
             <div className="thumbnails-row" aria-label="Product thumbnails">
               {images.map((imgUrl, idx) => {
-                const proxiedUrl = normalizeImageUrl(imgUrl);
+                const normalizedImgUrl = normalizeImageUrl(imgUrl);
                 return (
                   <button
                     type="button"
                     key={`thumb-${idx}`}
-                    className={`thumbnail-btn ${selectedImage === proxiedUrl ? 'active' : ''}`}
-                    onClick={() => setSelectedImage(proxiedUrl)}
+                    className={`thumbnail-btn ${selectedImage === normalizedImgUrl ? 'active' : ''}`}
+                    onClick={() => setSelectedImage(normalizedImgUrl)}
                     aria-label={`View image ${idx + 1} of ${images.length}`}
                   >
                     <img
-                      src={proxiedUrl}
+                      src={normalizedImgUrl}
                       alt={`${title} thumbnail ${idx + 1}`}
-                      onError={(e) => {
-                        e.target.src = FALLBACK_DETAIL_IMAGE;
-                      }}
+                      onError={handleThumbnailError}
                     />
                   </button>
                 );

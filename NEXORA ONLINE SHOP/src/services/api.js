@@ -46,13 +46,10 @@ async function fetchWithTimeout(url, { signal, timeout = REQUEST_TIMEOUT_MS } = 
  * seamlessly falls back to the local dev proxy.
  */
 async function apiRequest(endpoint, options = {}) {
-  const isBrowser = typeof window !== 'undefined';
-  const isLocalhost = isBrowser && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
-
   // Primary URL is direct DummyJSON API
   const directUrl = `${DIRECT_BASE_URL}${endpoint}`;
-  // Fallback URL is local dev proxy if on localhost
-  const proxyUrl = isLocalhost ? `${PROXY_BASE_URL}${endpoint}` : null;
+  // Resilient fallback URL proxied via Vite (dev) or Vercel edge rewrites (production)
+  const proxyUrl = `${PROXY_BASE_URL}${endpoint}`;
 
   try {
     const response = await fetchWithTimeout(directUrl, options);
@@ -66,10 +63,10 @@ async function apiRequest(endpoint, options = {}) {
       throw error;
     }
 
-    // If network connection reset or failed to fetch, and proxy is available, attempt fallback
+    // Dual-path resilience: retry via edge/local proxy if direct connection fails, times out, or resets
     if (proxyUrl) {
       try {
-        console.warn(`[NEXORA API] Direct request failed (${error.message}). Retrying via proxy...`);
+        console.warn(`[NEXORA API] Direct request failed (${error.message}). Retrying via proxy endpoint...`);
         const proxyResponse = await fetchWithTimeout(proxyUrl, options);
         if (proxyResponse.ok) {
           return await proxyResponse.json();
@@ -86,25 +83,31 @@ async function apiRequest(endpoint, options = {}) {
 }
 
 /**
- * Normalizes image URLs so they route through the local proxy (/cdn-images)
- * preventing firewall/network TCP connection resets on cdn.dummyjson.com in the browser
+ * Normalizes image URLs to ensure valid, absolute HTTPS DummyJSON CDN links.
+ * Handles migration for any legacy relative proxy paths (/cdn-images/) back to absolute CDN links.
  */
 export function normalizeImageUrl(url) {
-  if (!url || typeof url !== 'string') return url;
-  if (url.startsWith('https://cdn.dummyjson.com/')) {
-    return url.replace('https://cdn.dummyjson.com/', '/cdn-images/');
+  if (!url || typeof url !== 'string') return '';
+  const trimmed = url.trim();
+  if (trimmed.startsWith('/cdn-images/')) {
+    return trimmed.replace('/cdn-images/', 'https://cdn.dummyjson.com/');
   }
-  return url;
+  return trimmed;
 }
 
 export function normalizeProduct(product) {
   if (!product || typeof product !== 'object') return product;
+  const thumbnail = normalizeImageUrl(product.thumbnail);
+  const images = Array.isArray(product.images)
+    ? product.images.map(normalizeImageUrl).filter(Boolean)
+    : [];
+
+  const resolvedThumbnail = thumbnail || (images.length > 0 ? images[0] : '');
+
   return {
     ...product,
-    thumbnail: normalizeImageUrl(product.thumbnail),
-    images: Array.isArray(product.images)
-      ? product.images.map(normalizeImageUrl)
-      : product.images,
+    thumbnail: resolvedThumbnail,
+    images: images.length > 0 ? images : (resolvedThumbnail ? [resolvedThumbnail] : []),
   };
 }
 
@@ -112,13 +115,45 @@ export function normalizeProduct(product) {
  * Fetch all products
  * Primary Endpoint: https://dummyjson.com/products?limit=0
  */
+const PRODUCTS_CACHE_KEY = 'nexora_catalog_cache';
+const CATEGORIES_CACHE_KEY = 'nexora_categories_cache';
+
+/**
+ * Fetch all products
+ * Primary Endpoint: https://dummyjson.com/products?limit=0
+ */
 export async function fetchAllProducts({ signal } = {}) {
-  const data = await apiRequest('/products?limit=0', { signal });
-  if (data && Array.isArray(data.products)) {
-    return data.products.map(normalizeProduct);
-  }
-  if (Array.isArray(data)) {
-    return data.map(normalizeProduct);
+  try {
+    const data = await apiRequest('/products?limit=0', { signal });
+    let normalized = [];
+    if (data && Array.isArray(data.products)) {
+      normalized = data.products.map(normalizeProduct);
+    } else if (Array.isArray(data)) {
+      normalized = data.map(normalizeProduct);
+    }
+    if (normalized.length > 0) {
+      try {
+        sessionStorage.setItem(PRODUCTS_CACHE_KEY, JSON.stringify(normalized));
+      } catch (e) {
+        // Ignore session quota errors
+      }
+      return normalized;
+    }
+  } catch (err) {
+    if (err.name === 'AbortError') throw err;
+    try {
+      const cached = sessionStorage.getItem(PRODUCTS_CACHE_KEY);
+      if (cached) {
+        const parsed = JSON.parse(cached);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          console.warn('[NEXORA API] Serving products from session cache due to network failure');
+          return parsed;
+        }
+      }
+    } catch (e) {
+      // Ignore cache read errors
+    }
+    throw err;
   }
   return [];
 }
@@ -131,14 +166,33 @@ export async function fetchCategories({ signal } = {}) {
   try {
     const data = await apiRequest('/products/category-list', { signal });
     if (Array.isArray(data)) {
-      return data.map((item) => (typeof item === 'string' ? item : item.slug || item.name || String(item)));
+      const cats = data.map((item) => (typeof item === 'string' ? item : item.slug || item.name || String(item)));
+      try {
+        sessionStorage.setItem(CATEGORIES_CACHE_KEY, JSON.stringify(cats));
+      } catch (e) {}
+      return cats;
     }
   } catch (err) {
     if (err.name === 'AbortError') throw err;
     console.warn('[NEXORA API] /products/category-list fallback to /products/categories');
-    const altData = await apiRequest('/products/categories', { signal });
-    if (Array.isArray(altData)) {
-      return altData.map((item) => (typeof item === 'string' ? item : item.slug || item.name || String(item)));
+    try {
+      const altData = await apiRequest('/products/categories', { signal });
+      if (Array.isArray(altData)) {
+        const cats = altData.map((item) => (typeof item === 'string' ? item : item.slug || item.name || String(item)));
+        try {
+          sessionStorage.setItem(CATEGORIES_CACHE_KEY, JSON.stringify(cats));
+        } catch (e) {}
+        return cats;
+      }
+    } catch (altErr) {
+      if (altErr.name === 'AbortError') throw altErr;
+      try {
+        const cached = sessionStorage.getItem(CATEGORIES_CACHE_KEY);
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch (e) {}
     }
   }
   return [];

@@ -549,6 +549,18 @@ export default function Checkout() {
                     src={normalizeImageUrl(item.thumbnail) || 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="%23F1F5F9"><rect width="42" height="42" fill="%23F1F5F9"/></svg>'}
                     alt={item.title}
                     className="mini-item-thumb"
+                    onError={(e) => {
+                      const src = e.target.src;
+                      if (!src || src.startsWith('data:image/svg+xml')) return;
+                      if (src.includes('cdn.dummyjson.com') && !src.includes('/cdn-images/')) {
+                        const proxied = src.replace(/https?:\/\/cdn\.dummyjson\.com\//, '/cdn-images/');
+                        if (proxied !== src) {
+                          e.target.src = proxied;
+                          return;
+                        }
+                      }
+                      e.target.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="%23F1F5F9"><rect width="42" height="42" fill="%23F1F5F9"/></svg>';
+                    }}
                   />
                   <div>
                     <p style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--text-primary)', lineHeight: 1.2 }}>

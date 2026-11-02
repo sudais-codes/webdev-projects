@@ -18,8 +18,8 @@ export const formatPrice = (amount) => {
 const sanitizeStoredItem = (item) => {
   if (!item || typeof item !== 'object') return item;
   let thumb = item.thumbnail || '';
-  if (thumb && thumb.startsWith('https://cdn.dummyjson.com/')) {
-    thumb = thumb.replace('https://cdn.dummyjson.com/', '/cdn-images/');
+  if (thumb && thumb.startsWith('/cdn-images/')) {
+    thumb = thumb.replace('/cdn-images/', 'https://cdn.dummyjson.com/');
   }
   return { ...item, thumbnail: thumb };
 };

@@ -298,10 +298,19 @@ export default function Home({ scrollToProducts: initialScroll = false }) {
                 src={
                   spotlightProduct?.thumbnail
                     ? normalizeImageUrl(spotlightProduct.thumbnail)
-                    : '/cdn-images/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp'
+                    : 'https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp'
                 }
                 alt={spotlightProduct?.title || 'NEXORA Curated Spotlight'}
                 onError={(e) => {
+                  const src = e.target.src;
+                  if (!src || src.startsWith('data:image/svg+xml')) return;
+                  if (src.includes('cdn.dummyjson.com') && !src.includes('/cdn-images/')) {
+                    const proxied = src.replace(/https?:\/\/cdn\.dummyjson\.com\//, '/cdn-images/');
+                    if (proxied !== src) {
+                      e.target.src = proxied;
+                      return;
+                    }
+                  }
                   e.target.src =
                     'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200" fill="%23F1F5F9"><rect width="300" height="200" fill="%23F1F5F9"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="600" fill="%231D4ED8">NEXORA LUXURY</text></svg>';
                 }}
